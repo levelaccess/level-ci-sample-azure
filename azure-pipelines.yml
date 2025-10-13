@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: build_test_and_analyze
+    displayName: 'Build, Test, and Analyze'
+    jobs:
+      - job: build_test_and_analyze
+        displayName: 'Run All Pipeline Steps'
+        steps:
+          - checkout: self
+            displayName: 'Checkout code'
+
+          - script: npm install
+            displayName: 'Install NPM packages'
+            env:
+              CLOUDSMITH_TOKEN: $(CLOUDSMITH_TOKEN)
+
+          - script: npx playwright install chromium
+            displayName: 'Install Playwright browsers'
+
+          - script: npm run test:playwright
+            displayName: 'Run Playwright tests'
+
+          - task: LevelCIAnalyze@0.1.0
+            displayName: 'Run Level CI accessibility analysis'
+            inputs:
+              credentials: 'Level CI'

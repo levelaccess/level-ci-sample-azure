@@ -110,17 +110,6 @@ Run the Playwright test suite:  
 npm run test:playwright
 ```
 
-
-## 📚 Resources  
-
-**Demo site pages**:  
-- Main page  
-- Billing page  
-- Profile page  
-- Tables page  
-- Sign-up page  
-
-
 **Documentation**: See the full details in the [docs/](https://docs.ci.levelaccess.net/get-started/connect-repository/azure) directory.
 
 ---

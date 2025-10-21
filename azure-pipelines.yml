@@ -30,7 +30,7 @@ stages:
           - script: npm run test:playwright
             displayName: 'Run Playwright tests'
 
-          - task: LevelCIAnalyze@0.1.0
+          - task: LevelCIAnalyze@0
             displayName: 'Run Level CI accessibility analysis'
             inputs:
               credentials: 'Level CI'
